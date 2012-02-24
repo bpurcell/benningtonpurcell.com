@@ -54,10 +54,15 @@ li {
   margin: 0 10px;
   color: #7a2f2f;
 }
-li a:link {
+li a:link, li a:visited {
 	color: #7a2f2f;
+}
+li a:active {
+	font-size: 100px;
+	font-weight: bold;
 }
 li a:hover {
 	
+	font-weight: bold;
 	color: blue;
 }
