@@ -103,12 +103,20 @@ setAwayTimeout(60000);
       
       console.log(urls);
       
+      
+      $('#messagesDiv').height( $(window).height()-($('#chat_wrap').height()) );
+      
     $('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;
   });
   
   function linkify(inputText) {
       var replacedText, replacePattern1, replacePattern2, replacePattern3;
 
+      //URLs starting with http://, https://, or ftp://
+      replacePattern1 = /(https?:\/\/.*\.(?:png|jpg|gif|jpeg))/i;
+      replacedText = inputText.replace(replacePattern1, '<img src="$1">');
+      return replacedText;
+      
       //URLs starting with http://, https://, or ftp://
       replacePattern1 = /(\b(https?|ftp):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/gim;
       replacedText = inputText.replace(replacePattern1, '<a href="$1" target="_blank">$1</a>');

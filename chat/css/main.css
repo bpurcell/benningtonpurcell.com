@@ -16,10 +16,10 @@
 #messagesDiv {
     overflow:scroll;
     height:600px;
-    background:#efefef;
 }
-#messagesDiv div {
-    padding-bottom:5px;
+#messagesDiv div.row-fluid {
+    padding:4px 0 ;
+    border-top:1px solid #efefef;
 }
 #messagesDiv div em {
     width: 100px;
