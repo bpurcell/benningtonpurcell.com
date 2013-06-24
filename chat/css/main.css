@@ -1,0 +1,28 @@
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+#chat_wrap {
+    position:fixed;
+    width:100%;
+    bottom:0;
+    margin:0;
+}
+#chat_wrap textarea {
+    border:0;
+    width:100%;
+    height:50px;    margin:0;
+}
+#messagesDiv {
+    overflow:scroll;
+    height:600px;
+    background:#efefef;
+}
+#messagesDiv div {
+    padding-bottom:5px;
+}
+#messagesDiv div em {
+    width: 100px;
+display: inline-block;
+
+}

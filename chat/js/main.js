@@ -1,24 +1,11 @@
-<html>
-<head>
-  <script src="https://cdn.firebase.com/v0/firebase.js"></script>
-  <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js'></script>
-  <script src="https://www.firebase.com/js/libs/idle.js"></script>
-  <link rel="stylesheet" type="text/css" href="https://www.firebase.com/css/example.css">
-</head>
-<body>
-<div id='messagesDiv'></div>
-<input type='text' id='messageInput' placeholder='Message...'>
+var name = $.cookie('name');
+if(name == "undefined") { 
+    var name = prompt("Your name?", "Guest");
+    $.cookie('name', name);
+}
 
+var currentStatus = "★";
 
-<div id="presenceDiv"></div>
-<script>
-
-
-// Prompt the user for a name to use.
-var name = prompt("Your name?", "Guest"),
-    currentStatus = "★ online";
-
-// Get a reference to the presence data in Firebase.
 var userListRef = new Firebase("https://purcellchat.firebaseIO.com/userlist");
 
 // Generate a reference to a new location for my user with push.
@@ -32,7 +19,7 @@ connectedRef.on("value", function(isOnline) {
     myUserRef.onDisconnect().remove();
 
     // Set our initial online status.
-    setUserStatus("★ online");
+    setUserStatus("★");
   } else {
 
     // We need to catch anytime we are marked as offline and then set the correct status. We
@@ -53,7 +40,7 @@ function setUserStatus(status) {
 userListRef.on("child_added", function(snapshot) {
   var user = snapshot.val();
   $("#presenceDiv").append($("<div/>").attr("id", snapshot.name()));
-  $("#" + snapshot.name()).text(user.name + " is currently " + user.status);
+  $("#" + snapshot.name()).text(user.name + "  " + user.status);
 });
 
 // Update our GUI to remove the status of a user who has left.
@@ -64,18 +51,18 @@ userListRef.on("child_removed", function(snapshot) {
 // Update our GUI to change a user"s status.
 userListRef.on("child_changed", function(snapshot) {
   var user = snapshot.val();
-  $("#" + snapshot.name()).text(user.name + " is currently " + user.status);
+  $("#" + snapshot.name()).text(user.name + " " + user.status);
 });
 
 // Use idle/away/back events created by idle.js to update our status information.
 document.onIdle = function () {
-  setUserStatus("☆ idle");
+  setUserStatus("☆");
 }
 document.onAway = function () {
-  setUserStatus("☄ away");
+  setUserStatus("☄");
 }
 document.onBack = function (isIdle, isAway) {
-  setUserStatus("★ online");
+  setUserStatus("★");
 }
 
 setIdleTimeout(10000);
@@ -95,13 +82,65 @@ setAwayTimeout(60000);
     }
   });
 
+
+  var limits = 20;
+  
   // Add a callback that is triggered for each chat message.
-  messagesRef.limit(10).on('child_added', function (snapshot) {
+  messagesRef.limit(limits).on('child_added', function (snapshot) {
+    var exp = "/(\b(http?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig";
+    
+    
     var message = snapshot.val();
-    $('<div/>').text(message.text).prepend($('<em/>')
-      .text(message.name+': ')).appendTo($('#messagesDiv'));
+    
+    var urls = findUrls(message);
+        
+    var cont = $('<div/>').addClass('row-fluid');
+    $('<div/>').addClass('span2').text(message.name).appendTo(cont);
+    $('<div/>').addClass('span10').html(linkify(message.text)).appendTo(cont);
+    
+    
+    cont.appendTo('#messagesDiv');
+      
+      console.log(urls);
+      
     $('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;
   });
-</script>
-</body>
-</html>
+  
+  function linkify(inputText) {
+      var replacedText, replacePattern1, replacePattern2, replacePattern3;
+
+      //URLs starting with http://, https://, or ftp://
+      replacePattern1 = /(\b(https?|ftp):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/gim;
+      replacedText = inputText.replace(replacePattern1, '<a href="$1" target="_blank">$1</a>');
+
+      //URLs starting with "www." (without // before it, or it'd re-link the ones done above).
+      replacePattern2 = /(^|[^\/])(www\.[\S]+(\b|$))/gim;
+      replacedText = replacedText.replace(replacePattern2, '$1<a href="http://$2" target="_blank">$2</a>');
+
+      //Change email addresses to mailto:: links.
+      replacePattern3 = /(\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,6})/gim;
+      replacedText = replacedText.replace(replacePattern3, '<a href="mailto:$1">$1</a>');
+
+      return replacedText;
+  }
+  
+  
+  function findUrls( text )
+  {
+      var source = (text || '').toString();
+      var urlArray = [];
+      var url;
+      var matchArray;
+
+      // Regular expression to find FTP, HTTP(S) and email URLs.
+      var regexToken = /(((ftp|https?):\/\/)[\-\w@:%_\+.~#?,&\/\/=]+)|((mailto:)?[_.\w-]+@([\w][\w\-]+\.)+[a-zA-Z]{2,3})/g;
+
+      // Iterate through any URLs in the text.
+      while( (matchArray = regexToken.exec( source )) !== null )
+      {
+          var token = matchArray[0];
+          urlArray.push( token );
+      }
+
+      return urlArray;
+  }
