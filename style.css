@@ -1,0 +1,90 @@
+html {margin:0;padding:0;border:0;height: 100%;}
+body {
+		height: 100%;
+    line-height: 1.4;
+    background: #FFF;
+  background: url(snugglejack.svg) no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+
+#wrapper {
+    width: 100%;
+    height: 100%;
+margin: 0px;
+    font-family: 'IM Fell DW Pica', times, serif;
+    background: url(snugglejack.png) no-repeat bottom right fixed;
+}
+
+body, html { overflow: hidden;}
+#card {
+  	position: absolute;
+	margin: -180px 0 0 -250px;
+	left: 50%;
+	top: 50%;
+	background-color: #fff;
+	padding: 40px;
+	display: table;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	border-radius: 2px;
+	-webkit-box-shadow: 0px 2px 6px rgba(44, 49, 59, 50);
+	-moz-box-shadow: 0px 2px 6px rgba(44, 49, 59, 50);
+	box-shadow: 0px 2px 6px rgba(44, 49, 59, 50);
+
+	-moz-transform: rotate(-4deg);
+	-webkit-transform: rotate(-4deg);
+	-o-transform: rotate(-4deg);
+	-ms-transform: rotate(-4deg);
+	transform: rotate(-4deg);
+	-webkit-transition: -webkit-transform 0.2s ease-out;
+
+}
+#card:hover {
+	-webkit-transform: rotate(0deg); 
+	-moz-transform: rotate(0deg);
+	-webkit-transform: scale(1.25);
+	-webkit-transition: -webkit-transform 0.2s ease-out;
+	
+}
+strong {
+
+}
+#cv {
+	border-top: 1px solid #eee;
+	width: 100%;
+	margin-top: 12px;
+}
+#cv td {
+	padding: 0;
+	border-bottom: 1px solid #eee;
+}
+#cv .key {
+	width: 100px;
+	color: #bbb;
+	font-size: 11px;
+	vertical-align: center;
+	padding-right: 10px;
+}
+#cv .value {
+	font-size: 13px;
+}
+a {
+	color: #888;
+	text-decoration: none;
+	display: block;
+	background-color: #;
+	padding: 8px 0;
+}
+a:hover {
+	color: #000;
+}
+tr:hover {
+	background-color: #f8f8f9;
+}
+#timeline {
+	color: #888;
+}
+
