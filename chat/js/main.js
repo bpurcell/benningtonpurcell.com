@@ -1,16 +1,23 @@
+var hash = window.location.hash;
+hash = hash.substr(1,hash.length);
+var new_room = false;
+if (hash === ""){
+    // Generate a new hash
+    // TODO: security
+    hash = window.location.hash = Math.random().toString(36).substr(15);
+    new_room = true;
+}
+
 var name = $.cookie('name');
 if(name == "undefined") { 
     var name = prompt("Your name?", "Guest");
     $.cookie('name', name);
 }
 
-var currentStatus = "★";
-
-var userListRef = new Firebase("https://purcellchat.firebaseIO.com/userlist");
-
-var myUserRef = userListRef.push();
-
-var connectedRef = new Firebase("https://purcellchat.firebaseIO.com/.info/connected");
+var currentStatus = "★",
+    userListRef = new Firebase("https://purcellchat.firebaseIO.com/"+hash+"/userlist"),
+    myUserRef = userListRef.push(),
+    connectedRef = new Firebase("https://purcellchat.firebaseIO.com/.info/connected");
 connectedRef.on("value", function(isOnline) {
   if (isOnline.val()) {
     myUserRef.onDisconnect().remove();
@@ -57,7 +64,7 @@ setAwayTimeout(60000);
 
 
   // Get a reference to the root of the chat data.
-  var messagesRef = new Firebase('https://purcellchat.firebaseIO.com/chats');
+  var messagesRef = new Firebase("https://purcellchat.firebaseIO.com/"+hash+"/chats");
 
   // When the user presses enter on the message input, write the message to firebase.
   $('#messageInput').keypress(function (e) {
