@@ -117,6 +117,9 @@ box-shadow: -0 -5px 8px #888888;
 #whosHere {
     padding:10px;
 }
+#presenceDiv {
+    padding:20px 10px;
+}
 
 .msgCol,.nameCol {
     padding:12px;
