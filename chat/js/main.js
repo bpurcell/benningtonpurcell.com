@@ -100,13 +100,9 @@ setAwayTimeout(60000);
     
     
     cont.appendTo('#messagesDiv');
+      //$('#messagesDiv').height( $(window).height()-($('#chat_wrap').height()) );
       
-      console.log(urls);
-      
-      
-      $('#messagesDiv').height( $(window).height()-($('#chat_wrap').height()) );
-      
-    $('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;
+    $('#messagesDiv').scrollTop($('#messagesDiv')[0].scrollHeight);
   });
   
   function linkify(inputText) {

@@ -100,7 +100,7 @@ setAwayTimeout(60000);
     var message = snapshot.val();
     $('<div/>').text(message.text).prepend($('<em/>')
       .text(message.name+': ')).appendTo($('#messagesDiv'));
-    $('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;
+    $('#messagesDiv')[0].scrollTop($('#messagesDiv')[0].scrollHeight);
   });
 </script>
 </body>
