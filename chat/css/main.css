@@ -46,13 +46,53 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+
+/**
+ * Start Vanilla CSS 1.0.2 
+ */ 
+body {
+	font: 9pt/1.5em sans-serif;
+}
+pre, code, tt {
+	font: 1em/1.5em 'Andale Mono', 'Lucida Console', monospace;
+}
+h1, h2, h3, h4, h5, h6, b, strong {
+	font-weight: bold;
+}
+em, i, dfn {
+	font-style: italic;
+}
+dfn {
+	font-weight:bold;
+}
+p, code, pre, kbd {
+	margin:0 0 1.5em 0;
+}
+
+
+address {
+	margin:0 0 1.5em;
+	font-style:italic;
+}
+del {
+	text-decoration: line-through;
+}
+pre {
+	margin:1.5em 0;
+	white-space:pre;
+}
+img {
+	max-width: 100%;
+}
+
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
 
-html,body{height:100%;}
+html,body,#container{height:100%;
+    background:#efefef;}
 
-#chat_wrap {
+#chatWrap {
 box-shadow: -0 -5px 8px #888888;
         position:fixed;
         width:100%;
@@ -60,44 +100,43 @@ box-shadow: -0 -5px 8px #888888;
         margin:0;
     background:#efefef;
 }
-#chat_wrap textarea {
+#chatWrap textarea {
         border:0;
         width:100%;
         height:50px;    
     background:#efefef;
 }
 
-#messagesDiv {
+#messageWrap{
+    height:100%;
     overflow:scroll;
-}
-#messagesDiv div.row-fluid {
     padding:4px ;
     border-top:1px solid #efefef;
-    clear:both;
 }
-#messagesDiv div em {
-    width: 100px;
-display: inline-block;
 
+#whosHere {
+    padding:10px;
 }
-    #whos_here {
-        padding:10px;
-    }
-    .span2 {
-        float:left;
-        width:20%;
-        height:100%;
-    }
-    .span10 {
-        float:left;
-        width:70%;
-    }
+
+.msgCol,.nameCol {
+    padding:12px;
+}
+.msgCol:hover {
+    background:white;
+}
+#messagesDiv {
+    margin-bottom:15px;
+}
+#messagesDiv tr {
+}
+#messagesDiv tr:hover {
+    background:white;
+}
+
 
 @media only screen and (min-width: 720px) {
-    #messagesDiv {
-        padding-bottom:75px;
-    }
-    #whos_here {
+
+    #whosHere {
         float:right;
         width:120px;
     }
@@ -106,7 +145,7 @@ display: inline-block;
 }
 
 @media only screen and (max-width: 720px) {
-    #chat_wrap {
+    #chatWrap {
         height:35px;
         box-shadow: 0 -5px 8px #888888;
     }
@@ -114,7 +153,7 @@ display: inline-block;
         padding-bottom:50px;
     }
 
-    #whos_here {
+    #whosHere {
         position:fixed;
         top:0;
         right:0;
@@ -122,7 +161,7 @@ display: inline-block;
         opacity:.1;
         float:none;
     }
-    #whos_here:hover {
+    #whosHere:hover {
         position:fixed;
         top:0;
         right:0;

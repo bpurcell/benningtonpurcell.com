@@ -77,7 +77,7 @@ setAwayTimeout(60000);
   $('#messageInput').keypress(function (e) {
     if (e.keyCode == 13) {
       var text = $('#messageInput').val();
-      messagesRef.push({name:name, text:text});
+      messagesRef.push({name:name, text:text, data: new Date()});
       $('#messageInput').val('');
     }
   });
@@ -87,22 +87,17 @@ setAwayTimeout(60000);
   
   // Add a callback that is triggered for each chat message.
   messagesRef.limit(limits).on('child_added', function (snapshot) {
-    var exp = "/(\b(http?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig";
-    
-    
     var message = snapshot.val();
-    
-    var urls = findUrls(message);
         
-    var cont = $('<div/>').addClass('row-fluid');
-    $('<div/>').addClass('span2').text(message.name).appendTo(cont);
-    $('<div/>').addClass('span10').html(linkify(message.text)).appendTo(cont);
+    var cont = $('<tr/>');
+    $('<td/>').addClass('nameCol').text(message.name).appendTo(cont);
+    $('<td/>').addClass('msgCol').html(linkify(message.text)).appendTo(cont);
     
     
     cont.appendTo('#messagesDiv');
-      //$('#messagesDiv').height( $(window).height()-($('#chat_wrap').height()) );
+    $('#messageWrap').height( $(window).height()-($('#chatWrap').height()) );
       
-    $('#messagesDiv').scrollTop($('#messagesDiv')[0].scrollHeight);
+    $('#messageWrap').scrollTop($('#messageWrap')[0].scrollHeight);
   });
   
   function linkify(inputText) {
@@ -128,23 +123,3 @@ setAwayTimeout(60000);
       return replacedText;
   }
   
-  
-  function findUrls( text )
-  {
-      var source = (text || '').toString();
-      var urlArray = [];
-      var url;
-      var matchArray;
-
-      // Regular expression to find FTP, HTTP(S) and email URLs.
-      var regexToken = /(((ftp|https?):\/\/)[\-\w@:%_\+.~#?,&\/\/=]+)|((mailto:)?[_.\w-]+@([\w][\w\-]+\.)+[a-zA-Z]{2,3})/g;
-
-      // Iterate through any URLs in the text.
-      while( (matchArray = regexToken.exec( source )) !== null )
-      {
-          var token = matchArray[0];
-          urlArray.push( token );
-      }
-
-      return urlArray;
-  }
