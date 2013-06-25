@@ -104,7 +104,7 @@ padding: 1px;
 #chatWrap textarea {
     float:left;
         border:0;
-        width:78%;
+        width:100%;
         height:50px;    
     background:#efefef;
 }
@@ -150,17 +150,6 @@ border: 1px dashed #4f4f4f;
     background:white;
 }
 
-
-@media only screen and (min-width: 720px) {
-
-    #whosHere {
-        float:right;
-        width:120px;
-    }
-
-
-}
-
 @media only screen and (max-width: 720px) {
     #chatWrap {
         height:35px;
@@ -170,21 +159,17 @@ border: 1px dashed #4f4f4f;
         padding-bottom:50px;
     }
 
-    #whosHere {
+    #whosHere {border-bottom-left-radius:15px;
         position:fixed;
         top:0;
         right:0;
         background:white;
-        opacity:.1;
+        opacity:.3;
         float:none;
     }
-    #whosHere:hover {
-        position:fixed;
-        top:0;
-        right:0;
+    #whosHere:hover,#whosHere:focus {
         background:white;
         opacity:1;
-        float:none;
     }
     
 
