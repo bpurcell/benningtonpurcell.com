@@ -74,19 +74,13 @@ setAwayTimeout(60000);
   // Add a callback that is triggered for each chat message.
   messagesRef.limit(limits).on('child_added', function (snapshot) {
     var message = snapshot.val();
-        
     
-        
-    console.log(message.timestamp);
     var cont = $('<tr/>');
     $('<td/>').addClass('nameCol').text(message.name).append('<br>'+displayTime(message.timestamp)).appendTo(cont);
     $('<td/>').addClass('msgCol').html(linkify(message.text)).appendTo(cont);
-    
-    
     cont.appendTo('#messagesDiv');
-    $('#messageWrap').height( $(window).height()-($('#chatWrap').height()) );
-      
-    $('#messageWrap').scrollTop($('#messageWrap')[0].scrollHeight);
+    
+    $('#messageWrap').height( $(window).height()-($('#chatWrap').height()) ).scrollTop($('#messageWrap')[0].scrollHeight);
   });
     
   $('#messageWrap').scrollTop($('#messageWrap')[0].scrollHeight);

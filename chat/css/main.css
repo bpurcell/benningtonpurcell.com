@@ -21,7 +21,7 @@ time, mark, audio, video {
 	border: 0;
 	font-size: 100%;
 	font: inherit;
-	vertical-align: baseline;
+	vertical-align: top;
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
@@ -127,7 +127,13 @@ border: 1px dashed #4f4f4f;
 #presenceDiv {
     padding:20px 10px;
 }
-
+.nameCol {
+    font-weight:bold;
+    text-align:right;
+}
+.nameCol em{
+    font-weight:normal;
+}
 .msgCol,.nameCol {
     padding:12px;
 }
