@@ -63,7 +63,7 @@ setAwayTimeout(60000);
   $('#messageInput').keypress(function (e) {
     if (e.keyCode == 13) {
       var text = $('#messageInput').val();
-      messagesRef.push({name:name, text:text, data: new Date()});
+      messagesRef.push({name:name, text:text, timestamp: $.now() });
       $('#messageInput').val('');
     }
   });
@@ -75,8 +75,11 @@ setAwayTimeout(60000);
   messagesRef.limit(limits).on('child_added', function (snapshot) {
     var message = snapshot.val();
         
+    
+        
+    console.log(message.timestamp);
     var cont = $('<tr/>');
-    $('<td/>').addClass('nameCol').text(message.name).appendTo(cont);
+    $('<td/>').addClass('nameCol').text(message.name).append('<br>'+displayTime(message.timestamp)).appendTo(cont);
     $('<td/>').addClass('msgCol').html(linkify(message.text)).appendTo(cont);
     
     
@@ -110,4 +113,49 @@ setAwayTimeout(60000);
 
       return replacedText;
   }
+  
+  function displayTime(timestamp) {
+      var str = "";
+
+      var currentTime = new Date(timestamp)
+      var hours = currentTime.getHours()
+      var minutes = currentTime.getMinutes()
+      var seconds = currentTime.getSeconds()
+
+      if (minutes < 10) {
+          minutes = "0" + minutes
+      }
+      if (seconds < 10) {
+          seconds = "0" + seconds
+      }
+      str += '<em>'+hours + ":" + minutes + ":" + seconds + "&nbsp;";
+      if(hours > 11){
+          str += "PM </em>"
+      } else {
+          str += "AM </em>"
+      }
+      return str;
+  }
+  
+  filepicker.setKey('AO3aY4NHT1WRKxNo1mKR0z');
+  filepicker.makeDropPane($('#drag_and_drop')[0], {
+      multiple: true,
+      dragEnter: function() {
+          $("#drag_and_drop").html('Drag and drop here to upload <br><img src="download.png">').css({'border-style':'solid'});
+      },
+      dragLeave: function() {
+          $("#drag_and_drop").html('Drag and drop here to upload <br><img src="download.png">').css({'border-style':'dashed'});
+      },
+      onSuccess: function(InkBlobs) {
+          $("#drag_and_drop").html('Drag and drop here to upload <br><img src="download.png">').css({'border-style':'dashed'});
+          messagesRef.push({name:name, text:InkBlobs[0].url+'+name.jpg', timestamp: $.now() });
+          
+      },
+      onError: function(type, message) {
+          $("#localDropResult").text('('+type+') '+ message);
+      },
+      onProgress: function(percentage) {
+          $("#drag_and_drop").html(percentage+'%<br><img src="download.png">').css({'border-style':'dashed'});
+      }
+  });
   

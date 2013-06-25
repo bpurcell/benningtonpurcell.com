@@ -97,16 +97,23 @@ box-shadow: -0 -5px 8px #888888;
         position:fixed;
         width:100%;
         bottom:0;
+padding: 1px;
         margin:0;
     background:#efefef;
 }
 #chatWrap textarea {
+    float:left;
         border:0;
-        width:100%;
+        width:78%;
         height:50px;    
     background:#efefef;
 }
+#drag_and_drop {
+text-align: center;
+border: 1px dashed #4f4f4f;
 
+}
+    
 #messageWrap{
     height:100%;
     overflow:scroll;
