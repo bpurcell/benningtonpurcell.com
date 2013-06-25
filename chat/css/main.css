@@ -138,6 +138,7 @@ border: 1px dashed #4f4f4f;
     margin-bottom:15px;
 }
 #messagesDiv tr {
+    border: 1px solid rgb(179, 179, 179)
 }
 #messagesDiv tr:hover {
     background:white;
