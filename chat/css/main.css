@@ -123,6 +123,8 @@ border: 1px dashed #4f4f4f;
 
 #whosHere {
     padding:10px;
+        float:right;
+        width:120px;
 }
 #presenceDiv {
     padding:20px 10px;
@@ -144,11 +146,12 @@ border: 1px dashed #4f4f4f;
     margin-bottom:15px;
 }
 #messagesDiv tr {
-    border: 1px solid rgb(179, 179, 179)
+    border-top: 1px solid rgb(179, 179, 179)
 }
 #messagesDiv tr:hover {
     background:white;
 }
+
 
 @media only screen and (max-width: 720px) {
     #chatWrap {
