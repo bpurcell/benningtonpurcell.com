@@ -108,10 +108,10 @@ padding: 1px;
         height:50px;    
     background:#efefef;
 }
-#drag_and_drop {
-text-align: center;
+#drag_and_drop {text-align: center;
 border: 1px dashed #4f4f4f;
-
+height: 80px;
+background: url(../download.png) no-repeat center 40px;
 }
     
 #messageWrap{

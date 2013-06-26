@@ -85,6 +85,8 @@ messagesRef.limit(limits).on('child_added', function (snapshot) {
   $('<td/>').addClass('msgCol').html(linkify(message.text)).appendTo(cont);
   cont.appendTo('#messagesDiv');
   
+   document.title = hash + 'chat - New! - ' + message.timestamp;
+  
   $('#messageWrap').height( $(window).height()-($('#chatWrap').height()) ).scrollTop($('#messageWrap')[0].scrollHeight);
 });
   
@@ -94,9 +96,14 @@ function linkify(inputText) {
     var replacedText, replacePattern1, replacePattern2, replacePattern3;
 
     //URLs starting with http://, https://, or ftp://
-    replacePattern1 = /(https?:\/\/.*\.(?:png|jpg|gif|jpeg))/i;
-    replacedText = inputText.replace(replacePattern1, '<img src="$1">');
-    return replacedText;
+    replacePattern = /(https?:\/\/.*\.(?:png|jpg|gif|jpeg))/i;
+    
+    var replaced = inputText.search(replacePattern) >= 0;
+    if(replaced){
+        replacedText = inputText.replace(replacePattern, '<img src="$1">');
+        return replacedText;
+    }
+    
     
     //URLs starting with http://, https://, or ftp://
     replacePattern1 = /(\b(https?|ftp):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/gim;
@@ -140,13 +147,13 @@ filepicker.setKey('AO3aY4NHT1WRKxNo1mKR0z');
 filepicker.makeDropPane($('#drag_and_drop')[0], {
     multiple: true,
     dragEnter: function() {
-        $("#drag_and_drop").html('Drag and drop here to upload <br><img src="download.png">').css({'border-style':'solid'});
+        $("#drag_and_drop").css({'border-style':'solid'});
     },
     dragLeave: function() {
-        $("#drag_and_drop").html('Drag and drop here to upload <br><img src="download.png">').css({'border-style':'dashed'});
+        $("#drag_and_drop").css({'border-style':'dashed'});
     },
     onSuccess: function(InkBlobs) {
-        $("#drag_and_drop").html('Drag and drop here to upload <br><img src="download.png">').css({'border-style':'dashed'});
+        $("#drag_and_drop").css({'border-style':'dashed'});
         messagesRef.push({name:name, text:InkBlobs[0].url+'+name.jpg', timestamp: $.now() });
         
     },
@@ -154,6 +161,6 @@ filepicker.makeDropPane($('#drag_and_drop')[0], {
         $("#localDropResult").text('('+type+') '+ message);
     },
     onProgress: function(percentage) {
-        $("#drag_and_drop").html(percentage+'%<br><img src="download.png">').css({'border-style':'dashed'});
+        $("#drag_and_drop").html(percentage+'%').css({'border-style':'dashed'});
     }
 });
