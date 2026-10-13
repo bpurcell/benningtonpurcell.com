@@ -1,53 +1,91 @@
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en">
 <head>
-<meta charset="utf-8">
-<script>document.documentElement.className="js"</script>
-<title>Bennington Purcell</title>
-<link href="http://fonts.googleapis.com/css?family=IM+Fell+DW+Pica&subset=latin" rel="stylesheet">
-<link href="style.css" rel="stylesheet">
-
-
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Bennington Purcell — technologist, entrepreneur, and enthusiastic experimenter. Making sense of AI and making things just to see what happens.">
+  <meta name="theme-color" content="#f5f2e9">
+  <title>Bennington Purcell — Serious curiosity. Playful things.</title>
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css?v=3">
+  <script src="javascripts/playground.js?v=3" defer></script>
 </head>
 <body>
-    
-<section id="wrapper">
-<div id="card"> 
-		<p style="margin:0;"><strong>Bennington Purcell is a technologist/entrepreneur/hobbyist.</strong></p>
-		<table id="cv" cellspacing="0"> 
-			<tr> 
-				<td class="key">My Current Company</td> 
-				<td class="value"><a href="http://sourcemap.com/">Sourcemap, Inc.</a></td> 
-			</tr> 
-			<tr> 
-				<td class="key">Consulting Gig</td> 
-				<td class="value"><a href="http://porosventures.com/">Poros Ventures, LLC</a></td> 
-			</tr> 
-			<tr> 
-				<td class="key">Past Projects</td> 
-				<td class="value"><a href="http://simplachat.com/#author">SimplaChat</a>
-                    <a href="http://bpurcell.github.io/Tile-Stitcher/">Tile Stitcher PHP/GD Lib</a>
-                    <a href="http://pointrecorder.com/">Point Recorder</a>
-                    <a href="http://MeetGeni.us/">MeetGeni.us</a>
-                    <a href="http://Stopscout.com/">StopScout</a>
-                    <a href="http://www.snugglejack.com/">SnuggleJack</a></td> 
-			</tr> 
-			<tr> 
-				<td class="key">Blog</td> 
-				<td class="value"><a href="http://blog.benningtonpurcell.com/">Bennington Purcell</a></td> 
-			</tr> 
-			<tr> 
-				<td class="key">Follow me</td> 
-				<td class="value"><a href="http://twitter.com/benn_purcell">Twitter</a></td> 
-			</tr>
-			<tr> 
-				<td class="key">My Code</td> 
-				<td class="value"><a href="http://github.com/bpurcell">Github</a></td> 
-			</tr>
-		</table> 
-	</div>
-</section>
-
+<a class="skip-link" href="#main">Skip to content</a>
+<svg class="svg-library" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs>
+  <symbol id="star" viewBox="0 0 100 100"><path d="m50 0 10 32 25-22-13 31 28 9-30 10 15 29-27-20-8 31-10-31-27 20 15-29L0 50l30-9L15 10l25 22Z" fill="currentColor"/></symbol>
+  <symbol id="planet" viewBox="0 0 160 110"><circle cx="80" cy="55" r="36" fill="currentColor" stroke="#262820" stroke-width="3"/><path d="M46 43C-5 62 4 90 83 66s96-52 28-39" fill="none" stroke="#262820" stroke-width="9"/><path d="M46 43C-5 62 4 90 83 66s96-52 28-39" fill="none" stroke="#f5f2e9" stroke-width="4"/><path d="m72 32 6-5m-15 19 5-6" stroke="#262820" stroke-width="3" stroke-linecap="round"/></symbol>
+  <symbol id="plane" viewBox="0 0 140 100"><path d="m5 38 129-31-40 87-30-35-26 18 5-30Z" fill="currentColor" stroke="#262820" stroke-width="3" stroke-linejoin="round"/><path d="m43 47 91-40-70 52-26 18" fill="none" stroke="#262820" stroke-width="3"/></symbol>
+</defs></svg>
+<div class="scroll-progress" aria-hidden="true"></div>
+<div class="flight-layer" aria-hidden="true">
+  <svg class="flyer flyer-one"><use href="#plane"/></svg>
+  <svg class="flyer flyer-two"><use href="#planet"/></svg>
+  <svg class="flyer flyer-three"><use href="#star"/></svg>
+  <svg class="flyer flyer-four"><use href="#plane"/></svg>
+  <svg class="flyer flyer-five"><use href="#star"/></svg>
+  <svg class="flyer flyer-six"><use href="#planet"/></svg>
+</div>
+<header class="site-header">
+  <a href="#" class="wordmark" aria-label="Bennington Purcell home">bp<span>✳</span></a>
+  <nav aria-label="Main navigation"><a href="#playground">The playground <span>↘</span></a><a href="#about">A little about me</a><a href="https://github.com/bpurcell">GitHub ↗</a></nav>
+  <button class="motion-toggle" type="button" aria-pressed="false" aria-label="Pause animations" hidden><span aria-hidden="true">Ⅱ</span> <span class="motion-label">Pause motion</span></button>
+</header>
+<main id="main">
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="hero-copy">
+      <p class="eyebrow"><span class="status-dot"></span> BENNINGTON PURCELL / INTERNET ENTHUSIAST</p>
+      <h1 id="hero-title">Serious<br>curiosity.<br><span class="playful">Playful things.<svg viewBox="0 0 570 30" aria-hidden="true"><path d="M4 17Q280-7 565 13M57 26Q305 6 510 24"/></svg></span></h1>
+      <p class="intro">Technologist. Entrepreneur. Inveterate tinkerer.<br>I help people make sense of AI. And make things<br class="desktop-break"> just to see what happens.</p>
+      <div class="hero-actions"><a class="button primary" href="https://random.bennpurcell.com/">Enter the playground <span>↗</span></a><button class="weird-button" id="weird-button" type="button" hidden>Make it weirder <span aria-hidden="true">✳</span></button></div>
+      <p class="margin-note">A little code. A lot of “what if?”</p>
+      <a class="scroll-invitation" href="#what-if">Keep scrolling. Things get carried away. <span aria-hidden="true">↓</span></a>
+    </div>
+    <div class="hero-art" aria-label="A collage of the original SnuggleJack illustration, orbiting planets, and flying paper planes" role="img">
+      <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+      <div class="art-window"><img src="snugglejack.svg" alt="" fetchpriority="high" width="1000" height="700"></div>
+      <img class="snugglejack-character" src="snugglejack.png" alt="" width="200" height="441">
+      <svg class="art-planet float" viewBox="0 0 160 110" aria-hidden="true"><use href="#planet"/></svg>
+      <svg class="art-plane float" viewBox="0 0 140 100" aria-hidden="true"><use href="#plane"/></svg>
+      <svg class="art-star spin" viewBox="0 0 100 100" aria-hidden="true"><use href="#star"/></svg>
+      <div class="sticker">STAY<br><em>CURIOUS.</em><span>EST. NEVER FINISHED</span></div>
+      <span class="art-caption">original weirdness, still here. ↖</span>
+      <svg class="doodle" viewBox="0 0 220 90" aria-hidden="true"><path d="M5 47c15-69 53-27 36 2S7 87 33 71s37-79 57-57 0 67 26 51 50-60 91-20m-18-17 20 17-25 7"/></svg>
+    </div>
+  </section>
+  <div class="ticker" aria-hidden="true"><div>BUILD THINGS <span>✳</span> BREAK THINGS <span>✳</span> ASK BETTER QUESTIONS <span>✳</span> PLAY A LITTLE <span>✳</span> REPEAT <span>✳</span> BUILD THINGS <span>✳</span> BREAK THINGS <span>✳</span> ASK BETTER QUESTIONS <span>✳</span> PLAY A LITTLE <span>✳</span> REPEAT <span>✳</span></div></div>
+  <section class="scroll-lab" id="what-if" aria-labelledby="lab-title">
+    <div class="lab-stage">
+      <p class="eyebrow lab-label">A SMALL THOUGHT. AN UNREASONABLE TRAJECTORY.</p>
+      <h2 id="lab-title">What <em>if?</em></h2>
+      <div class="lab-universe" aria-hidden="true">
+        <div class="lab-ring ring-a"></div><div class="lab-ring ring-b"></div>
+        <svg class="flight-path" viewBox="0 0 1000 500" preserveAspectRatio="none"><path d="M50 350C200 0 330 500 500 240S800 0 950 220"/></svg>
+        <svg class="lab-planet" viewBox="0 0 160 110"><use href="#planet"/></svg>
+        <svg class="lab-spark" viewBox="0 0 100 100"><use href="#star"/></svg>
+        <svg class="lab-spark second" viewBox="0 0 100 100"><use href="#star"/></svg>
+        <svg class="lab-plane" viewBox="0 0 140 100"><use href="#plane"/></svg>
+        <span class="lab-note note-a">follow the idea ↗</span><span class="lab-note note-b">probably worth a try.</span>
+      </div>
+      <p class="lab-caption">That’s usually how it starts.</p>
+      <div class="lab-meter" aria-hidden="true"><span>SCROLL TO EXPERIMENT</span><i></i><span>↓</span></div>
+    </div>
+  </section>
+  <section class="playground section" id="playground" aria-labelledby="playground-title">
+    <div class="section-heading"><div><p class="eyebrow">01 / THE EXPERIMENT DEPARTMENT</p><h2 id="playground-title">Follow a rabbit hole.</h2></div><a class="text-link" href="https://random.bennpurcell.com/">All games & experiments ↗</a></div>
+    <p class="section-intro">Browser games, curious tools, musical detours. Built by prompting AI, then asking it to try again. These are a few doors in.</p>
+    <div class="projects">
+      <a class="project" href="https://random.bennpurcell.com/little-leaps/"><div class="project-image lavender"><img src="images/projects/little-leaps.webp" width="960" height="540" alt="A colorful sky platformer with floating islands" loading="lazy"><span class="project-index">01 / PLAY</span><span class="project-arrow">↗</span></div><h3>Little Leaps</h3><p>Small jumps. Wide-open skies. See where you land.</p></a>
+      <a class="project" href="https://random.bennpurcell.com/komorebi/"><div class="project-image pink"><img src="images/projects/komorebi.webp" width="960" height="540" alt="The Komorebi drawing experiment" loading="lazy"><span class="project-index">02 / MAKE</span><span class="project-arrow">↗</span></div><h3>Komorebi</h3><p>A drawing detour. Follow a line and see what grows.</p></a>
+      <a class="project" href="https://random.bennpurcell.com/instruments/"><div class="project-image green"><img src="images/projects/instruments.webp" width="960" height="540" alt="A collection of playable virtual musical instruments" loading="lazy"><span class="project-index">03 / MAKE NOISE</span><span class="project-arrow">↗</span></div><h3>Instrument Cabinet</h3><p>Open the cabinet. Find an instrument. Make a little noise.</p></a>
+    </div>
+  </section>
+  <section class="about section" id="about" aria-labelledby="about-title">
+    <div class="about-title"><p class="eyebrow">02 / THE PERSON BEHIND THE TABS</p><h2 id="about-title">Been building.<br><em>Still playing.</em></h2><svg viewBox="0 0 100 100" aria-hidden="true"><use href="#star"/></svg></div>
+    <div class="about-copy"><p>I’m Bennington. I started writing code professionally in 1999, at 13, with QBasic. A few companies and exits later, curiosity is still the through line.</p><p>These days I consult, helping people figure out what AI means for their work. VibeGames is my hands-off-the-keyboard experiment: games, music tools, visualizations, and the occasional glorious wrong turn.</p><p>Some things are useful. Some things are just fun.<br>There’s room for both.</p><a class="text-link" href="https://www.linkedin.com/in/benningtonpurcell">Let’s compare notes ↗</a></div>
+  </section>
+</main>
+<footer><a class="wordmark" href="#" aria-label="Back to top">bp<span>✳</span></a><p>A work in progress. On purpose.</p><div><a href="https://github.com/bpurcell">GitHub ↗</a><a href="https://www.linkedin.com/in/benningtonpurcell">LinkedIn ↗</a><a href="https://random.bennpurcell.com/">VibeGames ↗</a></div></footer>
+<p id="play-status" class="sr-only" role="status"></p>
 </body>
 </html>
-
